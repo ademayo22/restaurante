@@ -1,0 +1,174 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #F1F6FA;
+  margin: 0;
+  color: #293241;
+}
+
+header {
+  background: #4076d9;
+  color: #fff;
+  padding: 32px 0 24px 0;
+  text-align: center;
+  border-radius: 0 0 30px 30px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h2 {
+  margin: 22px 0 10px 0;
+  color: #4076d9;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 30px #0001;
+  padding: 18px 24px;
+  margin: 24px auto;
+  max-width: 600px;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e1e4ed;
+}
+
+nav {
+  margin: 20px 0;
+  text-align: center;
+}
+
+nav a, nav button, .boton {
+  background: #4076d9;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  margin: 0 6px 10px 0;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+nav a:hover, nav button:hover, .boton:hover {
+  background: #2d4c80;
+}
+
+form {
+  background: #f8fbff;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px #0001;
+  display: inline-block;
+}
+
+input[type="text"], input[type="password"], input[type="number"], .input {
+  margin: 8px 10px 8px 0;
+  padding: 10px;
+  border: 1px solid #b1c4e0;
+  border-radius: 5px;
+  font-size: 1em;
+  background: #fff;
+}
+
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.sidebar-admin {
+  width: 220px;
+  background: #4076d9;
+  color: #fff;
+  padding: 32px 12px;
+  border-radius: 0 30px 30px 0;
+  min-height: 100vh;
+  box-shadow: 2px 0 14px #0001;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar-admin h2 {
+  margin-bottom: 38px;
+  color: #fff;
+}
+
+.sidebar-admin nav ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar-admin nav ul li {
+  margin-bottom: 24px;
+}
+
+.sidebar-admin nav ul li a {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background 0.18s;
+}
+
+.sidebar-admin nav ul li.active a,
+.sidebar-admin nav ul li a:hover {
+  background: #3055a6;
+}
+
+.sidebar-admin .boton {
+  background: #f15e4a;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 12px;
+  font-size: 1em;
+}
+
+.sidebar-admin .boton:hover {
+  background: #c0392b;
+}
+
+@media (max-width: 700px) {
+  .card {
+    padding: 12px 6px;
+    max-width: 100%;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  nav a, nav button {
+    font-size: 0.98em;
+    padding: 8px 13px;
+  }
+}
