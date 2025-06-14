@@ -7,6 +7,7 @@ const PlatoSchema = new mongoose.Schema({
   alergenos: [String],
   precio: Number,
   categoria: String,
+    imagen: String, 
   activo: { type: Boolean, default: true }
 });
 
