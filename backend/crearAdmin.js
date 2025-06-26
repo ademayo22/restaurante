@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 const User = require("./models/User.model");
 
-// Cambiá el string de conexión si usás otro distinto en .env
+// 
 const MONGO_URI = "mongodb://localhost:27017/restaurante";
 
 mongoose.connect(MONGO_URI)
   .then(async () => {
-    await User.create({ usuario: "admin", password: "admin1234", esAdmin: true });
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash("admin1234", saltRounds);
+
+    await User.create({ usuario: "admin", password: hashedPassword, esAdmin: true });
     console.log("Usuario admin creado exitosamente!");
     process.exit();
   })

@@ -1,3 +1,4 @@
+import BackgroundLayout from "./components/BackgroundLayout";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
@@ -12,11 +13,11 @@ import ScrollTopButton from "./components/ScrollTopButton";
 // Admin
 import Login from "./admin/Login";
 import AdminLayout from "./admin/AdminLayout";
+import AdminDashboard from "./admin/AdminDashboard"; // Importamos el nuevo componente
 import Platos from "./admin/Platos";
 import Usuarios from "./admin/Usuarios";
 
 function App() {
-  // Usá esto para proteger las rutas admin:
   const token = localStorage.getItem("token");
 
   return (
@@ -26,14 +27,56 @@ function App() {
         <div className="flex-1">
           <Routes>
             {/* Rutas públicas */}
-            <Route path="/" element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/plato/:id" element={<PlatoDetalle />} />
+            <Route
+              path="/"
+              element={
+                <BackgroundLayout>
+                  <Home />
+                </BackgroundLayout>
+              }
+            />
+            <Route
+              path="/menu"
+              element={
+                <BackgroundLayout>
+                  <Menu />
+                </BackgroundLayout>
+              }
+            />
+            <Route
+              path="/plato/:id"
+              element={
+                <BackgroundLayout>
+                  <PlatoDetalle />
+                </BackgroundLayout>
+              }
+            />
 
             {/* Login Admin */}
-            <Route path="/admin/login" element={<Login />} />
+            <Route
+              path="/admin/login"
+              element={
+                token ? (
+                  <Navigate to="/admin" replace /> // Redirige al dashboard en lugar de a platos
+                ) : (
+                  <Login />
+                )
+              }
+            />
 
-            {/* Panel admin: sidebar siempre visible */}
+            {/* Nuevo Dashboard Admin (sin sidebar) */}
+            <Route
+              path="/admin"
+              element={
+                token ? (
+                  <AdminDashboard /> // Usamos el nuevo componente aquí
+                ) : (
+                  <Navigate to="/admin/login" replace />
+                )
+              }
+            />
+
+            {/* Rutas específicas de admin (con sidebar) */}
             <Route
               path="/admin/platos"
               element={
@@ -42,7 +85,7 @@ function App() {
                     <Platos />
                   </AdminLayout>
                 ) : (
-                  <Navigate to="/admin/login" />
+                  <Navigate to="/admin/login" replace />
                 )
               }
             />
@@ -54,25 +97,13 @@ function App() {
                     <Usuarios />
                   </AdminLayout>
                 ) : (
-                  <Navigate to="/admin/login" />
-                )
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                token ? (
-                  <AdminLayout>
-                    <h2 className="text-2xl font-bold">Bienvenido al panel de administración</h2>
-                  </AdminLayout>
-                ) : (
-                  <Navigate to="/admin/login" />
+                  <Navigate to="/admin/login" replace />
                 )
               }
             />
 
-            {/* Redirección catch-all */}
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* Ruta catch-all: redirige a home */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
         <Footer />

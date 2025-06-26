@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
+.input {
+    @apply w-full border border-gray-300 rounded px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-yellow-500;
+  }
+  
+  .boton {
+    @apply bg-yellow-700 text-white px-4 py-2 rounded font-semibold hover:bg-yellow-800 transition;
+  }
+  
+  .titulo {
+    @apply text-2xl font-bold text-center mb-6;
+  }
+  
+  .card {
+    @apply bg-white shadow-lg rounded-xl p-8;
+  }
+  
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F8F1E6; /* crema */
+    color: #333;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+/* Elimina completamente los estilos azules en todos los estados */
+a, button, input, textarea {
+    -webkit-tap-highlight-color: rgba(125, 44, 62, 0.3) !important; /* Color vino con transparencia */
+  }
+  
+  /* Elimina outline azul en focus */
+  *:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Elimina color azul en Safari para inputs */
+  input, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Elimina estilos nativos en móviles */
+  @media (max-width: 768px) {
+    a, button {
+      -webkit-tap-highlight-color: rgba(125, 44, 62, 0.3) !important;
+      tap-highlight-color: rgba(125, 44, 62, 0.3) !important;
+    }
+  }
