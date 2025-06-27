@@ -22,13 +22,11 @@ function Navbar() {
           El Buen Comer
         </Link>
 
-        {/* Botón - solo visible en móvil */}
         <button
           className="sm:hidden text-[#F5EDE0] focus:outline-none"
           onClick={() => setMenuAbierto(!menuAbierto)}
           aria-label="Abrir menú"
         >
-          {/* Icono simple hamburguesa */}
           <svg
             className="w-8 h-8"
             fill="none"
@@ -54,7 +52,6 @@ function Navbar() {
           </svg>
         </button>
 
-        {/* Menú: oculto en móvil, visible en escritorio */}
         <div
           className={`flex-col sm:flex-row sm:flex items-center gap-6 w-full sm:w-auto mt-4 sm:mt-0 bg-[#2A2118] sm:bg-transparent rounded-lg sm:rounded-none shadow-md sm:shadow-none transition-all duration-300 ease-in-out ${
             menuAbierto ? "flex" : "hidden"
@@ -62,7 +59,9 @@ function Navbar() {
         >
           <Link
             to="/menu"
-            className="bg-[#7D2C3E] text-[#F5EDE0] px-4 py-2 rounded-lg font-semibold shadow-md transition-opacity duration-300 hover:opacity-90 block text-center sm:inline-block"
+            className={`px-4 py-2 rounded-lg font-semibold shadow-md transition-opacity duration-300 hover:opacity-90 block text-center sm:inline-block ${
+              pathname === "/menu" ? "bg-[#B38B59]" : "bg-[#7D2C3E]"
+            } text-[#F5EDE0]`}
             onClick={() => setMenuAbierto(false)}
           >
             Carta
@@ -75,11 +74,13 @@ function Navbar() {
           </button>
           <Link
             to="/admin/login"
-            className="bg-[#7D2C3E] text-[#F5EDE0] px-4 py-2 rounded-lg font-semibold shadow-md transition-opacity duration-300 hover:opacity-90 block text-center sm:inline-block"
-            onClick={() => setMenuAbierto(false)}
-          >
-            Administración
-          </Link>
+                className={`px-4 py-2 rounded-lg font-semibold shadow-md transition-opacity duration-300 hover:opacity-90 block text-center sm:inline-block ${
+                pathname.startsWith("/admin") ? "bg-[#B38B59]" : "bg-[#7D2C3E]"
+                      } text-[#F5EDE0]`}
+                      onClick={() => setMenuAbierto(false)}
+                                >
+  Administración
+</Link>
         </div>
       </div>
     </nav>

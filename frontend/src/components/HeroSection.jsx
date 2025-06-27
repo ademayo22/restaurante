@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] w-full flex items-center justify-center text-white overflow-hidden">
+    <section className="relative w-full flex items-center justify-center text-white overflow-hidden py-12">
       <img
         src="/images/bodegonHome.png"
         alt="Bodegón argentino"
@@ -19,7 +19,7 @@ function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href="#reserva"
+               href="tel:+01143211234"
               className="bg-[#7D2C3E] hover:bg-[#7f1515] text-white font-semibold py-3 px-6 rounded transition w-full sm:w-auto text-center"
             >
               Reservar mesa

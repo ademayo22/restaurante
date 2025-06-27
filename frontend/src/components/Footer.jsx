@@ -2,14 +2,11 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer id="footer-contact" className="bg-[#2A2118] text-[#F5EDE0] py-8 shadow-inner">
+    <footer id="footer-contact" className="w-full bg-[#2A2118] text-[#F5EDE0] py-8 shadow-inner z-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Sección de Contacto destacada */}
         <div className="text-center mb-6">
-        <h2 className="text-xl font-serif font-bold mb-4 text-[#F5EDE0]">Contacto</h2>
+          <h2 className="text-xl font-serif font-bold mb-4 text-[#F5EDE0]">Contacto</h2>
         </div>
-        
-        {/* Información existente */}
         <div className="text-center space-y-2">
           <p className="font-bold text-lg sm:text-xl">El Buen Comer</p>
           <p className="text-sm sm:text-base">Av. Corrientes 1234, Buenos Aires</p>

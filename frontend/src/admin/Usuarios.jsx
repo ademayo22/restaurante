@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 function Usuarios() {
   const token = localStorage.getItem("token");
@@ -8,17 +8,18 @@ function Usuarios() {
   const [mensaje, setMensaje] = useState("");
   const [mensajeError, setMensajeError] = useState("");
 
-  const fetchUsuarios = () => {
-    fetch("http://localhost:5001/api/users", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then(setUsuarios);
-  };
+const fetchUsuarios = useCallback(() => {
+  fetch("http://localhost:5001/api/users", {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((res) => res.json())
+    .then(setUsuarios);
+}, [token]);
 
-  useEffect(() => {
-    fetchUsuarios();
-  }, []);
+useEffect(() => {
+  fetchUsuarios();
+}, [fetchUsuarios]);
+
 
   const crearUsuario = async () => {
     if (!nuevo.usuario || !nuevo.password) {
