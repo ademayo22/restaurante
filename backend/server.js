@@ -12,7 +12,9 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => console.error(err));
 
 app.use("/api/users", require("./routes/user.route"));
+app.use("/api/auth", require("./routes/auth"));
 app.use("/api/platos", require("./routes/plato.route"));
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`API escuchando en puerto ${PORT}`));
+
