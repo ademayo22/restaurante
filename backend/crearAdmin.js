@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 const User = require("./models/User.model");
 
-// 
-const MONGO_URI = "mongodb://localhost:27017/restaurante";
-
-mongoose.connect(MONGO_URI)
+mongoose.connect("mongodb://localhost:27017/restaurante")
   .then(async () => {
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash("admin1234", saltRounds);
+    await User.deleteOne({ usuario: "admin" }); // borra si existe
 
-    await User.create({ usuario: "admin", password: hashedPassword, esAdmin: true });
-    console.log("Usuario admin creado exitosamente!");
+    const newUser = new User({
+      usuario: "admin",
+      password: "admin123",  // el pre('save') lo hashea
+      esAdmin: true
+    });
+
+    await newUser.save();
+    console.log("Admin creado correctamente");
     process.exit();
   })
   .catch(err => {

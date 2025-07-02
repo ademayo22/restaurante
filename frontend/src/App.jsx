@@ -1,115 +1,61 @@
-import BackgroundLayout from "./components/BackgroundLayout";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
-import Home from "./carta/Home";
-import Menu from "./carta/Menu";
-import PlatoDetalle from "./carta/PlatoDetalle";
-
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ScrollTopButton from "./components/ScrollTopButton";
-
-// Admin
 import Login from "./admin/Login";
 import AdminLayout from "./admin/AdminLayout";
-import AdminDashboard from "./admin/AdminDashboard"; // Importamos el nuevo componente
+import AdminDashboard from "./admin/AdminDashboard";
 import Platos from "./admin/Platos";
 import Usuarios from "./admin/Usuarios";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
-  const token = localStorage.getItem("token");
-
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-gray-100">
-        <Navbar />
         <div className="flex-1">
           <Routes>
-            {/* Rutas públicas */}
-            <Route
-              path="/"
-              element={
-                <BackgroundLayout>
-                  <Home />
-                </BackgroundLayout>
-              }
-            />
-            <Route
-              path="/menu"
-              element={
-                <BackgroundLayout>
-                  <Menu />
-                </BackgroundLayout>
-              }
-            />
-            <Route
-              path="/plato/:id"
-              element={
-                <BackgroundLayout>
-                  <PlatoDetalle />
-                </BackgroundLayout>
-              }
-            />
-
             {/* Login Admin */}
-            <Route
-              path="/admin/login"
-              element={
-                token ? (
-                  <Navigate to="/admin" replace /> // Redirige al dashboard en lugar de a platos
-                ) : (
-                  <Login />
-                )
-              }
-            />
+            <Route path="/admin/login" element={<Login />} />
 
-            {/* Nuevo Dashboard Admin (sin sidebar) */}
+            {/* Dashboard Admin */}
             <Route
               path="/admin"
               element={
-                token ? (
-                  <AdminDashboard /> // Usamos el nuevo componente aquí
-                ) : (
-                  <Navigate to="/admin/login" replace />
-                )
+                <RequireAuth>
+                  <AdminDashboard />
+                </RequireAuth>
               }
             />
 
-            {/* Rutas específicas de admin (con sidebar) */}
+            {/* Platos */}
             <Route
               path="/admin/platos"
               element={
-                token ? (
+                <RequireAuth>
                   <AdminLayout>
                     <Platos />
                   </AdminLayout>
-                ) : (
-                  <Navigate to="/admin/login" replace />
-                )
-              }
-            />
-            <Route
-              path="/admin/usuarios"
-              element={
-                token ? (
-                  <AdminLayout>
-                    <Usuarios />
-                  </AdminLayout>
-                ) : (
-                  <Navigate to="/admin/login" replace />
-                )
+                </RequireAuth>
               }
             />
 
-            {/* Ruta catch-all: redirige a home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+            {/* Usuarios */}
+            <Route
+              path="/admin/usuarios"
+              element={
+                <RequireAuth>
+                  <AdminLayout>
+                    <Usuarios />
+                  </AdminLayout>
+                </RequireAuth>
+              }
+            />
+
+            {/* Catch all: redirige a /admin */}
+            <Route path="*" element={<Navigate to="/admin" replace />} />
           </Routes>
         </div>
-        
       </div>
-      
-        <ScrollTopButton />
     </Router>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "./Footer.jsx";  // O la ruta donde lo tengas
+
 
 function BackgroundLayout({ children }) {
   return (
@@ -15,7 +15,7 @@ function BackgroundLayout({ children }) {
         {children}
       </main>
 
-      <Footer className="relative z-10" />
+      
     </div>
   );
 }
