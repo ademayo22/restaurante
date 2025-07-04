@@ -213,7 +213,7 @@ function Platos() {
                           type="number"
                           min="0"
                           step="0.01"
-                          className="w-full border rounded px-2 py-1 text-[#2A2118] border-[#C8A97E] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E]"
+                          className="w-full  border rounded px-2 py-1 text-[#2A2118] border-[#C8A97E] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E]"
                           value={editando.precio || ""}
                           onChange={(e) =>
                             setEditando({ ...editando, precio: e.target.value })
@@ -501,7 +501,7 @@ function Platos() {
             <input
               id="nombre"
               type="text"
-              className="w-full border border-[#7D2C3E] rounded px-3 py-2 text-[#2A2118] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E] text-sm md:text-base"
+              className=" w-full border border-[#7D2C3E] rounded px-3 py-2 text-[#2A2118] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E] text-sm md:text-base"
               placeholder="Nombre del plato"
               value={nuevo.nombre}
               onChange={(e) => setNuevo({ ...nuevo, nombre: e.target.value })}
@@ -561,42 +561,48 @@ function Platos() {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block font-semibold mb-1 text-sm md:text-base text-[#2A2118]" htmlFor="precio">
-                Precio
-              </label>
-              <input
-                id="precio"
-                type="number"
-                min="0"
-                step="0.01"
-                className="w-full border border-[#7D2C3E] rounded px-3 py-2 text-[#2A2118] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E] text-sm md:text-base"
-                placeholder="Precio"
-                value={nuevo.precio}
-                onChange={(e) => setNuevo({ ...nuevo, precio: e.target.value })}
-                required
-              />
-            </div>
+  <div>
+    <label
+      className="block font-semibold mb-1 text-sm md:text-base text-[#2A2118]"
+      htmlFor="precio"
+    >
+      Precio
+    </label>
+    <input
+      id="precio"
+      type="number"
+      min="0"
+      step="0.01"
+      className="input appearance-none h-[44px] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+      placeholder="Precio"
+      value={nuevo.precio}
+      onChange={(e) => setNuevo({ ...nuevo, precio: e.target.value })}
+      required
+    />
+  </div>
 
-            <div>
-              <label className="block font-semibold mb-1 text-sm md:text-base text-[#2A2118]" htmlFor="categoria">
-                Categoría
-              </label>
-              <select
-                id="categoria"
-                className="w-full border border-[#7D2C3E] rounded px-3 py-2 bg-white text-[#2A2118] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E] text-sm md:text-base"
-                value={nuevo.categoria}
-                onChange={(e) => setNuevo({ ...nuevo, categoria: e.target.value })}
-              >
-                <option value="">Seleccione categoría</option>
-                <option value="Carnes">Carnes</option>
-                <option value="Pescados">Pescados</option>
-                <option value="Pastas">Pastas</option>
-                <option value="Postres">Postres</option>
-                <option value="Bebidas">Bebidas</option>
-              </select>
-            </div>
-          </div>
+  <div>
+    <label
+      className="block font-semibold mb-1 text-sm md:text-base text-[#2A2118]"
+      htmlFor="categoria"
+    >
+      Categoría
+    </label>
+    <select
+      id="categoria"
+      className="input appearance-none h-[44px]"
+      value={nuevo.categoria}
+      onChange={(e) => setNuevo({ ...nuevo, categoria: e.target.value })}
+    >
+      <option value="">Seleccione categoría</option>
+      <option value="Carnes">Carnes</option>
+      <option value="Pescados">Pescados</option>
+      <option value="Pastas">Pastas</option>
+      <option value="Postres">Postres</option>
+      <option value="Bebidas">Bebidas</option>
+    </select>
+  </div>
+</div>
 
           <div>
             <label className="block font-semibold mb-1 text-sm md:text-base text-[#2A2118]" htmlFor="imagen">

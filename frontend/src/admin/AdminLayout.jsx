@@ -6,8 +6,12 @@ function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen"
+       style={{ backgroundColor: "#2A2118" }}
+       
+       >
       <div className="flex flex-1">
+        
         <Sidebar
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}

@@ -17,7 +17,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     <>
       {/* Botón hamburguesa para móviles */}
       <button
-        className="fixed top-4 left-4 z-20 md:hidden bg-[#7D2C3E] text-[#F5EDE0] p-2 rounded-md shadow-md"
+        className="fixed top-4 left-4 z-30 md:hidden bg-[#7D2C3E] text-[#F5EDE0] p-2 rounded-md shadow-md"
         onClick={() => setSidebarOpen(!sidebarOpen)}
         aria-label="Abrir/cerrar menú lateral"
       >
@@ -27,8 +27,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 z-10 h-full w-64 p-6 bg-[#2A2118] shadow-lg
-          transform transition-transform duration-300 ease-in-out
+          fixed top-0 left-0 z-20 h-full w-64 p-6 bg-[#2A2118] shadow-lg
+          transform transition-transform duration-300 ease-in-out 
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
           md:translate-x-0 md:static md:flex md:flex-col md:min-h-screen
         `}
@@ -40,12 +40,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         <nav className="flex-1 flex flex-col space-y-4">
           <Link
             to="/admin/platos"
-            className={`flex items-center gap-3 px-5 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+            className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg font-semibold transition-colors duration-300 ${
               isActive("/admin/platos")
                 ? "bg-[#7D2C3E] text-white"
                 : "bg-[#C8A97E] text-[#2A2118] hover:bg-[#C8A97E] hover:text-[#2A2118]"
             }`}
-            onClick={() => setSidebarOpen(false)} // Cierra menú al elegir en móvil
+            onClick={() => setSidebarOpen(false)}
           >
             <Edit2 size={20} />
             Platos
@@ -53,7 +53,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
           <Link
             to="/admin/usuarios"
-            className={`flex items-center gap-3 px-5 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+            className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg font-semibold transition-colors duration-300 ${
               isActive("/admin/usuarios")
                 ? "bg-[#7D2C3E] text-white"
                 : "bg-[#C8A97E] text-[#2A2118] hover:bg-[#C8A97E] hover:text-[#2A2118]"
@@ -70,7 +70,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             logout();
             setSidebarOpen(false);
           }}
-          className="mt-auto flex items-center gap-3 px-5 py-3 bg-[#A83232] hover:bg-[#7A1F1F] rounded-lg font-semibold transition text-[#F5EDE0]"
+          className="w-full mt-auto flex items-center gap-3 px-5 py-3 bg-[#A83232] hover:bg-[#7A1F1F] rounded-lg font-semibold transition text-[#F5EDE0]"
         >
           <LogOut size={20} />
           Cerrar sesión
@@ -80,7 +80,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       {/* Fondo semi-transparente detrás de sidebar en móvil cuando está abierto */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-50 z-5 md:hidden"
+          className="fixed inset-0 bg-black opacity-30 z-5 md:hidden"
           onClick={() => setSidebarOpen(false)}
           aria-hidden="true"
         />

@@ -4,9 +4,9 @@
 
 
 .input {
-  @apply w-full border border-[#7D2C3E] rounded px-3 py-2 mb-2 text-[#2A2118] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E] text-sm md:text-base appearance-none h-[44px];
-}
-
+    @apply w-full border border-gray-300 rounded px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-yellow-500;
+  }
+  
   .boton {
     @apply bg-yellow-700 text-white px-4 py-2 rounded font-semibold hover:bg-yellow-800 transition;
   }
@@ -59,9 +59,4 @@ a, button, input, textarea {
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-
-.input-vino {
-  @apply w-full border border-[#7D2C3E] rounded px-3 py-2 text-[#2A2118] focus:outline-none focus:ring-2 focus:ring-[#7D2C3E] text-sm md:text-base appearance-none;
 }
